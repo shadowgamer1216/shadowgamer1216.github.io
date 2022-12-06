@@ -1,0 +1,186 @@
+/*
+ * This is the stylesheet for encrypt-it
+ */
+
+@import url('https://fonts.googleapis.com/css?family=Orbitron|Lato');
+
+/* Typography */
+
+body {
+  background-color: #202020;
+  color: white;
+  font-family: "Lato", sans-serif;
+}
+
+button, select {
+  font-family: "Lato", sans-serif;
+}
+
+button, textarea {
+  color: white;
+}
+
+h1, h2, legend {
+  text-align: center;
+}
+
+h1 {
+  margin: 30px auto;
+  font-size: 28pt;
+  font-family: "Orbitron", sans-serif;
+  /*
+   * If you've never seen text-shadow, open up the Inspector and play around
+   * with it a bit!
+   */
+  text-shadow: 3px 3px #d92b6f, -3px -3px #047ab9;
+  /*
+   * This here sets the header to do the animation defined by the keyframe rule
+   * "glitch", and plays it for 1 second when the page loads
+   */
+  animation: glitch 1s;
+}
+
+legend {
+  padding: 0 16pt;
+  font-size: 16pt;
+}
+
+button, strong, textarea, #result-area {
+  font-size: 14pt;
+}
+
+strong {
+  line-height: 26pt;
+}
+
+select {
+  padding: 2pt;
+  margin: 0 14pt;
+  font-size: 12pt;
+}
+
+/* Fieldset */
+
+button, fieldset, select, textarea, #result {
+  border-radius: 5pt;
+}
+
+fieldset {
+  width: 80%;
+  padding: 7pt 14pt;
+  border: 1.5pt solid white;
+  margin: 14pt auto;
+}
+
+textarea {
+  width: 100%;
+  padding: 7pt;
+  border: 2px solid #101010;
+  background-color: #101010;
+  /*
+   * Disable resize and outline (the blue-y border thing you see when you click
+   * on interactive elements on a page. Never remove outline if you are not
+   * implementing your own CSS for an element's focused state for
+   * accessibility!)
+   * Read more at:
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/outline#Accessibility_concerns
+   */
+  resize: none;
+  outline: none;
+  /*
+   * A CSS property that changes the border-color smoothly when the textarea
+   * changes state. In this case, when the text area is focused
+   */
+  transition: border-color 0.5s;
+}
+
+textarea:focus {
+  border-color: #047ab9;
+}
+
+#result {
+  width: 80%;
+  padding: 7pt;
+  min-height: 20px;
+  margin: 0 auto;
+  background-color: #101010;
+}
+
+button, select {
+  border: none;
+}
+
+button {
+  min-width: 150px;
+  padding: 5px;
+  margin: 5px 0;
+  background-color: #047ab9;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+button:hover {
+  background-color: #d92b6f;
+}
+
+h2, p {
+  animation: fade-in-up 0.5s;
+  animation-fill-mode: both;
+}
+
+p {
+  animation-delay: 0.2s;
+  margin: 0;
+}
+
+/*
+ * The keyframes rule defines a CSS animation. It defines what styles
+ * the selected elements take on at certain times.
+ */
+@keyframes glitch {
+  /*
+   * Keyframes are defined by percentage, the length of the animation
+   * is defined in the animation property, see line 42 in h1 ruleset.
+   *
+   * Since the length of the animation is 1s, 0% is the start time (0s)
+   * 15% represents 15% of 1s (0.15s) and so on.
+   */
+  0% {
+    /* heading is hidden at this point */
+    opacity: 0;
+    text-shadow: none;
+  }
+  15% {
+    /* text-shadow starts small */
+    text-shadow: 1px 1px #d92b6f, -1px -1px #047ab9;
+  }
+  35% {
+    /* text-shadow at max expansion */
+    text-shadow: 10px 10px #047ab9, -10px -10px #d92b6f;
+  }
+  65% {
+    /* text-shadow squeeze back but over shoots */
+    text-shadow: 1px 1px #d92b6f, -1px -1px #047ab9;
+  }
+  100% {
+    /* heading is fully revealed */
+    opacity: 1;
+    /* text-shadow's final position*/
+    text-shadow: 3px 3px #d92b6f, -3px -3px #047ab9;
+  }
+}
+
+/*
+ * A simpler keyframe rule, where 'from' is the same as 0%, and 'to' is the same
+ * as 100%
+ */
+@keyframes fade-in-up {
+  from {
+    transform: translateY(8pt);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
