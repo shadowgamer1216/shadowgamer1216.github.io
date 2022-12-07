@@ -3,6 +3,7 @@
   <head>
     <title>Encrypt-It!</title>
     <link rel="stylesheet" href="style.css">
+    <script src = "encrypt-it.js"> </script>	
   </head>
   <body>
     <header>
@@ -39,11 +40,11 @@
         <p>
           <label>
             <strong>All-Caps:</strong>
-            <input id="all-caps" type="checkbox" name="uppercase-ouput" value="uppercase"/>
+            <input id="all-caps" type="checkbox" name="uppercase-output" value="uppercase"/>
           </label>
         </p>
 
-        <button id="encrypt-it">Encrypt It!</button>
+        <button id="encrypt-it" onclick="cipherOnClick();">Encrypt It!</button>
         <button id="reset">Reset</button>
       </fieldset>
 
